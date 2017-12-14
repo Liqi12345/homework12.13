@@ -1,16 +1,19 @@
 
 
-	function $(str){
+	function $(str,ranger = document){
+		// ranger代表的是对象,元素节点,选择范围
 		if(typeof str == 'string'){
+			// ranger = ranger?ranger:document;
+			// ranger = ranger || document;
 			let str1 = str.trim();
 			let str2 = str1.charAt(0);
 			if(str2 == '#'){
 				return document.getElementById(str1.slice(1));
 			}else if(str2 == '.'){
-				return document.getElementsByClassName(str1.slice(1));
-			}else if(/^[a-zA-Z][A-Za-z1-6]{0,6}$/.test(str1)){
-				return document.getElementsByTagName(str1);
-			}else if(/^<[a-zA-Z][A-Za-z1-6]{0,6}>$/.test(str1)){
+				return ranger.getElementsByClassName(str1.slice(1));
+			}else if(/^[a-zA-Z][A-Za-z1-6]{0,10}$/.test(str1)){
+				return ranger.getElementsByTagName(str1);
+			}else if(/^<[a-zA-Z][A-Za-z1-6]{0,10}>$/.test(str1)){
 				return document.createElement(str1.slice(1,-1));
 			}
 		}else if(typeof str == 'function'){
