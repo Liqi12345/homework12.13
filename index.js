@@ -33,13 +33,13 @@ class Code{
 			this.arr = [];
 			this.positions = [];
 			this.speed = 5;
-			this.fenshu = document.querySelector('.box>span:first-child')
+			this.fenshu = document.querySelector('.box1>span:first-child')
 			this.kaishi = $('button')[0];
 			this.zanting = $('button')[1];
 
 			this.tim = 0;
 			this.gq = 5;
-			this.life = document.querySelector('.box>span:last-child')
+			this.life = document.querySelector('.box2>span:first-child')
 			this.shengming = 10;
 		}
 	
