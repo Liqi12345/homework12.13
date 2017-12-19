@@ -129,29 +129,45 @@ class Code{
 		// 3.判断生命值如果小于0;判断是否重新开始
 		drop(){
 			let that = this;
-			that.t = setInterval(function(){
+			that.t = setInterval(move,100)
+			function move(){
 				for(let i = 0;i < that.arr.length;i++){
-				let tops1 = that.arr[i].offsetTop + that.speed;
-				that.arr[i].style.top = tops1 + 'px';
-				if(tops1 >= 500 ){
-					document.body.removeChild(that.arr[i])
-					that.arr.splice(i,1)
-					that.positions.splice(i,1)
-					that.one()
-					that.shengming--;
-					that.life.innerText = that.shengming;
-					if(that.shengming <= 0){
-					let flag = confirm('是否重新开始');
-					if(flag){
-						that.restart()
-					}else{
-						close()
+					let tops1 = that.arr[i].offsetTop + that.speed;
+					that.arr[i].style.top = tops1 + 'px';
+					if(tops1 >= 500 ){
+						document.body.removeChild(that.arr[i])
+						that.arr.splice(i,1)
+						that.positions.splice(i,1)
+						that.one()
+						that.shengming--;
+						that.life.innerText = that.shengming;
+						if(that.shengming <= 0){
+							let flag = confirm('是否重新开始');
+							if(flag){
+								that.restart()
+							}else{
+								close()
+							}
+						}
 					}
-			}
-				}
 				// console.log(that.speed)
 				}
-			},100)	
+			}
+			let flags = true;
+			that.zanting.onclick = function(){
+				if(flags == true){
+					console.log(1)
+					clearInterval(that.t)
+					flags = false;
+				}
+			}	
+			that.kaishi.onclick = function(){
+				if(flags == false){
+				that.t = setInterval(move,100)
+				flags = true;
+				}
+			}
+				
 		}
 
 
@@ -181,11 +197,11 @@ class Code{
 						if(that.tim >= that.gq){
 							alert('恭喜你,进入下一关');
 							that.next()
-
 						}
 						
 					}
 				}
+
 			}
 		}
 
@@ -207,6 +223,7 @@ class Code{
 			console.log(this.tim)
 			this.getcode(this.length)
 			this.drop()
+
 		}
 
 
@@ -225,6 +242,8 @@ class Code{
 			clearInterval(this.t)
 			this.length++;
 			this.speed++;
+			this.shengming = 10;
+			this.life.innerText = this.shengming;
 			this.tim = 0;
 
 			this.gq += 10;
@@ -233,17 +252,8 @@ class Code{
 		}
 
 
-		// 开关函数
-		// kai(){
-		// 	let flags = true;
-		// 	this.kaishi.onclick = function(){
-		// 		if(flags == true){
-		// 			this.start()
-		// 			flags = false;
-		// 		}else if(flags == false){
-		// 			clearInterval(this.t)
-		// 	}
-		// }
+	
+
 }
 
 
