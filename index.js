@@ -89,7 +89,7 @@ class Code{
 			}while(this.repeat(this.code[item][0]))
 
 			divs.innerText = this.code[item][0];
-			console.log(this.code[item][1])
+			// console.log(this.code[item][1])
 			document.body.append(divs);
 			this.arr.push(divs)
 			
@@ -103,7 +103,7 @@ class Code{
 			}while(this.repeatpositions(left1))
 
 			divs.style.left =left1 + 'px';
-			console.log(left1);
+			// console.log(left1);
 			this.positions.push(left1)
 			divs.style.background =`url('${this.code[item][1]}') center/cover`;
 
@@ -245,7 +245,7 @@ class Code{
 			this.shengming = 10;
 			this.life.innerText = this.shengming;
 			this.tim = 0;
-
+			this.gq = 5;
 			this.gq += 10;
 			this.getcode(this.length)
 			this.drop()
